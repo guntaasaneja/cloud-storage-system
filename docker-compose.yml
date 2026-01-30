@@ -1,0 +1,35 @@
+version: '3'
+services:
+postgres:
+image: postgres
+environment:
+POSTGRES_PASSWORD: pass
+
+
+redis:
+image: redis
+
+
+kafka:
+image: bitnami/kafka
+
+
+metadata-service:
+build: ./metadata-service
+depends_on: [postgres]
+
+
+storage-node-1:
+build: ./storage-node-1
+
+
+storage-node-2:
+build: ./storage-node-2
+
+
+load-balancer:
+build: ./load-balancer
+
+
+api-gateway:
+build: ./api-gateway
