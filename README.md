@@ -39,12 +39,12 @@ Client → API Gateway → Metadata Service → PostgreSQL
 
 Start services in order:
 
-1. PostgreSQL  
-2. metadata-service  
-3. storage-node-1  
-4. storage-node-2  
-5. load-balancer  
-6. api-gateway  
+1. PostgreSQL(docker start postgres-dev)
+2. metadata-service(mvn spring-boot:run -Dspring-boot.run.arguments=--server.port=8083)
+3. storage-node-1(mvn spring-boot:run -Dspring-boot.run.arguments=--server.port=8081)
+4. storage-node-2(mvn spring-boot:run -Dspring-boot.run.arguments=--server.port=8082)
+5. load-balancer(mvn spring-boot:run -Dspring-boot.run.arguments=--server.port=8084)
+6. api-gateway(mvn spring-boot:run -Dspring-boot.run.arguments=--server.port=8080)
 
 Upload test:
 ```bash
